@@ -22,21 +22,23 @@ describe('Restaurant and Menu Models', function() {
             expect(seedRestaurant[0].name).toEqual('AppleBees')
             expect(seedRestaurant[0].location).toEqual('Texas')
             expect(seedRestaurant[0].cuisine).toEqual('FastFood')
+            expect(seedRestaurant[0].rating).toEqual(1)
         });
 
         test('can find Restaurants', async function() {
             // TODO - write test
-            const restaurant = await Restaurant.findAll({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood"}})
+            const restaurant = await Restaurant.findAll({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood", rating: 1}})
             expect(restaurant[0].name).toEqual("AppleBees")
             expect(restaurant[0].location).toEqual("Texas")
             expect(restaurant[0].cuisine).toEqual("FastFood")
+            expect(seedRestaurant[0].rating).toEqual(1)
         });
 
         test('can delete Restaurants', async function() {
             // TODO - write test
-            await Restaurant.destroy({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood"}})
-            const deleteRestaurant = await Restaurant.findAll({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood"}})
-            expect(deleteRestaurant).not.toEqual({name: "AppleBees", location: "Texas", cuisine: "FastFood"})
+            await Restaurant.destroy({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood", rating: 1}})
+            const deleteRestaurant = await Restaurant.findAll({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood", rating: 1}})
+            expect(deleteRestaurant).not.toEqual({name: "AppleBees", location: "Texas", cuisine: "FastFood", rating: 1})
         });
 
 
