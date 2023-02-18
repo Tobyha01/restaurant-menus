@@ -38,10 +38,11 @@ describe('Restaurant and Menu Models', function() {
             expect(restaurant[0].cuisine).toEqual("FastFood")
         });
 
-    //     test('can find Menus', async function() {
-    //         // TODO - write test
-    //         expect('NO TEST').toEqual('EXPECTED DATA')
-    //     });
+        test('can find Menus', async function() {
+            // TODO - write test
+            const menu = await Menu.findAll({where: {title: "Breakfast"}})
+            expect(menu[0].title).toEqual('Breakfast')
+        });
 
     //     test('can delete Restaurants', async function() {
     //         // TODO - write test
