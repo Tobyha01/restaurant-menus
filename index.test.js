@@ -24,10 +24,11 @@ describe('Restaurant and Menu Models', function() {
             expect(seedRestaurant[0].cuisine).toEqual('FastFood')
         });
 
-    //     test('can create a Menu', async function() {
-    //         // TODO - write test
-    //         expect('NO TEST').toEqual('EXPECTED DATA')
-    //     });
+        test('can create a Menu', async function() {
+            // TODO - write test
+            await Menu.create(seedMenu[0])
+            expect(seedMenu[0].title).toEqual("Breakfast")
+        });
 
     //     test('can find Restaurants', async function() {
     //         // TODO - write test
