@@ -44,8 +44,10 @@ describe('Restaurant and Menu Models', function() {
             expect(menu[0].title).toEqual('Breakfast')
         });
 
-    //     test('can delete Restaurants', async function() {
-    //         // TODO - write test
-    //         expect('NO TEST').toEqual('EXPECTED DATA')
-    //     });
+        test('can delete Restaurants', async function() {
+            // TODO - write test
+            await Restaurant.destroy({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood"}})
+            const deleteRestaurant = await Restaurant.findAll({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood"}})
+            expect(deleteRestaurant).not.toEqual({name: "AppleBees", location: "Texas", cuisine: "FastFood"})
+        });
     })
