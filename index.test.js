@@ -30,10 +30,13 @@ describe('Restaurant and Menu Models', function() {
             expect(seedMenu[0].title).toEqual("Breakfast")
         });
 
-    //     test('can find Restaurants', async function() {
-    //         // TODO - write test
-    //         expect('NO TEST').toEqual('EXPECTED DATA')
-    //     });
+        test('can find Restaurants', async function() {
+            // TODO - write test
+            const restaurant = await Restaurant.findAll({where: {name: "AppleBees", location: "Texas", cuisine: "FastFood"}})
+            expect(restaurant[0].name).toEqual("AppleBees")
+            expect(restaurant[0].location).toEqual("Texas")
+            expect(restaurant[0].cuisine).toEqual("FastFood")
+        });
 
     //     test('can find Menus', async function() {
     //         // TODO - write test
