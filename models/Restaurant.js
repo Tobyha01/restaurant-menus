@@ -5,7 +5,8 @@ const {sequelize, DataTypes, /* Sequelize */} = require('../db');
 const Restaurant = sequelize.define ("restaurant", {
     name: DataTypes.STRING,
     location: DataTypes.STRING,
-    cuisine: DataTypes.STRING
+    cuisine: DataTypes.STRING,
+    rating: DataTypes.NUMBER
 })
 
 module.exports = {Restaurant};
