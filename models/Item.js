@@ -1,4 +1,4 @@
-const {Datatypes, sequelize, DataTypes} = require("../db")
+const {sequelize, DataTypes} = require("../db")
 
 const Item = sequelize.define("item", {
     name: DataTypes.STRING,
