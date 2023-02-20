@@ -34,7 +34,7 @@ describe('Restaurant and Menu Models', function() {
             expect(menu2.title).toEqual("Lunch")
         });
 
-        test("can associate many Menu's with many Item's", async function() {
+        test("can associate many Menu's with many Item's, using eager loading", async function() {
             const item1 = await Item.create(seedItem[0])
             const item2 = await Item.create(seedItem[1])
             const item3 = await Item.create(seedItem[2])
@@ -44,17 +44,18 @@ describe('Restaurant and Menu Models', function() {
 
             const menu = await Menu.findByPk(1)
             await menu.addItems([1,2])
-            const items = await menu.getItems(menu[0])
-            expect(items[0].name).toBe("bhindi masala")
-            expect(items[1].name).toBe("egusi soup")
-            expect(items[0].price).toBe(9.50)
-            expect(items[1].price).toBe(10.50)
-            expect(items[0].vegetarian).toBe(true)
-            expect(items[1].vegetarian).toBe(false)
+            // const items = await menu.getItems(menu[0])
+            const menu1 = await Menu.findByPk(1, {include: {model: Item, as: "Items"}})
+            expect(menu1.Items[0].name).toBe("bhindi masala")
+            expect(menu1.Items[1].name).toBe("egusi soup")
+            expect(menu1.Items[0].price).toBe(9.50)
+            expect(menu1.Items[1].price).toBe(10.50)
+            expect(menu1.Items[0].vegetarian).toBe(true)
+            expect(menu1.Items[1].vegetarian).toBe(false)
             
 
         })
-        
+
         test("can associate many Menu's with one restaurant", async function() {
             const restaurant = await Restaurant.findByPk(1)
             await restaurant.addMenus([1,2])
@@ -92,4 +93,6 @@ describe('Restaurant and Menu Models', function() {
             const deleteMenu = await Menu.findAll({where: {title: "Breakfast"}})
             expect(deleteMenu).not.toEqual({title: "Breakfast"})
         });
+
+    
     })
