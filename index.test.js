@@ -45,7 +45,7 @@ describe('Restaurant and Menu Models', function() {
             const menu = await Menu.findByPk(1)
             await menu.addItems([1,2])
             // const items = await menu.getItems(menu[0])
-            const menu1 = await Menu.findByPk(1, {include: {model: Item, as: "Items"}})
+            const menu1 = await Menu.findByPk(1, {include: [{model: Item , as: "Items"}]})
             expect(menu1.Items[0].name).toBe("bhindi masala")
             expect(menu1.Items[1].name).toBe("egusi soup")
             expect(menu1.Items[0].price).toBe(9.50)
