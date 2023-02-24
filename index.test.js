@@ -52,8 +52,6 @@ describe('Restaurant and Menu Models', function() {
             expect(menu1.Items[1].price).toBe(10.50)
             expect(menu1.Items[0].vegetarian).toBe(true)
             expect(menu1.Items[1].vegetarian).toBe(false)
-            
-
         })
 
         test("can associate many Menu's with one restaurant", async function() {
